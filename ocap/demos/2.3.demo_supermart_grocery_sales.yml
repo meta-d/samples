@@ -1,0 +1,2870 @@
+- name: Supermart Grocery Sales
+  dataSource: Demo - DB
+  dataset:
+    - name: supermart_grocery_sales
+      fileUrl: ./supermart/Supermart Grocery Sales - Retail Analytics Dataset.csv
+      catalog: demo
+      mergeType: DELETE
+      format: csv
+      withHeader: true
+      columns:
+        - name: Order ID
+          type: string
+          length: 20
+          fieldName: order_id
+          isKey: true
+        - name: Customer Name
+          type: string
+          length: 50
+          fieldName: customer_name
+        - name: Category
+          type: string
+          length: 50
+          fieldName: category
+        - name: Sub Category
+          type: string
+          length: 50
+          fieldName: sub_category
+        - name: City
+          type: string
+          length: 50
+          fieldName: city
+        - name: Order Date
+          type: string
+          length: 10
+          fieldName: order_date
+        - name: Region
+          type: string
+          length: 50
+          fieldName: region
+        - name: Sales
+          type: Numeric
+          fieldName: sales
+          fraction: 2
+        - name: Discount
+          type: Numeric
+          fieldName: discount
+          fraction: 2
+        - name: Profit
+          type: Numeric
+          fieldName: profit
+          fraction: 2
+        - name: State
+          type: string
+          length: 50
+          fieldName: state
+  semanticModel:
+    - name: Demo - 新零售交易模型
+      key: 03hDiK8cWq
+      description: Semantic Model workspace for Supermart Grocery Sales
+      businessAreaId: Demo - Sales
+      dataSourceId: Demo - DB
+      type: XMLA
+      catalog: demo
+      cube: Supermart Grocery Sales
+      options:
+        schema:
+          name: 新零售交易模型
+          dimensions:
+            - __id__: tw0aZqRZkA
+              name: Time Calendar
+              caption: 时间日历
+              hierarchies:
+                - __id__: iM8HphywNv
+                  caption: 时间日历
+                  hasAll: true
+                  primaryKey: id
+                  tables:
+                    - name: time_calendar
+                  visible: true
+                  levels:
+                    - name: year
+                      caption: 年
+                      visible: true
+                      column: year
+                      table: time_calendar
+                      levelType: TimeYears
+                      semantics:
+                        semantic: Calendar.Year
+                        formatter: yyyy
+                      keyExpression: null
+                      nameExpression: null
+                      captionExpression: null
+                      ordinalExpression: null
+                      parentExpression: null
+                      closure: null
+                      properties: null
+                      __id__: QAMUyctgYO
+                    - name: quarter
+                      caption: 季
+                      visible: true
+                      column: quarter
+                      table: time_calendar
+                      levelType: TimeQuarters
+                      semantics:
+                        semantic: Calendar.Quarter
+                        formatter: '[yyyy].[Q]'
+                      captionExpression:
+                        sql:
+                          - dialect: postgres
+                            content: CONCAT(year, 'Q', quarter)
+                          - dialect: mysql
+                            content: CONCAT(year, 'Q', quarter)
+                      keyExpression: null
+                      nameExpression: null
+                      ordinalExpression: null
+                      parentExpression: null
+                      closure: null
+                      properties: null
+                      __id__: NH4xsXX3wM
+                    - name: month
+                      caption: 月
+                      visible: true
+                      column: month
+                      table: time_calendar
+                      levelType: TimeMonths
+                      semantics:
+                        semantic: Calendar.Month
+                        formatter: '[yyyy].[Q].[yyyy-MM]'
+                      keyExpression: null
+                      nameExpression: null
+                      captionExpression: null
+                      ordinalExpression: null
+                      parentExpression: null
+                      closure: null
+                      properties: null
+                      __id__: cuestznHWU
+                    - name: id
+                      caption: 日
+                      visible: true
+                      column: id
+                      table: time_calendar
+                      levelType: TimeDays
+                      semantics:
+                        semantic: Calendar.Day
+                        formatter: '[yyyy].[Q].[yyyy-MM].[yyyy-MM-dd]'
+                      keyExpression: null
+                      nameExpression: null
+                      captionExpression: null
+                      ordinalExpression: null
+                      parentExpression: null
+                      closure: null
+                      properties: null
+                      __id__: T9rLxNmO5B
+              semantics:
+                semantic: Calendar
+              type: TimeDimension
+          cubes:
+            - __id__: lacYnmYcg7
+              name: Supermart Grocery Sales
+              caption: 超市杂货销售
+              tables:
+                - name: supermart_grocery_sales
+              defaultMeasure: Sales
+              dimensionUsages:
+                - name: Time Calendar
+                  caption: 时间日历
+                  source: Time Calendar
+                  foreignKey: order_date
+                  __id__: 9aHu1qiJMe
+              dimensions:
+                - __id__: ASXAnWAGmu
+                  name: Order ID
+                  caption: 订单
+                  hierarchies:
+                    - __id__: ps4mv0NxX0
+                      name: ''
+                      hasAll: true
+                      visible: true
+                      levels:
+                        - __id__: jSULdsfwNe
+                          name: Order ID
+                          caption: 订单号
+                          column: order_id
+                          type: String
+                          visible: true
+                          semantics: null
+                          keyExpression: null
+                          nameExpression: null
+                          captionExpression: null
+                          ordinalExpression: null
+                          parentExpression: null
+                          closure: null
+                          properties: null
+                  semantics: null
+                - __id__: YwNamJ6K4E
+                  name: Customer
+                  caption: 客户
+                  hierarchies:
+                    - __id__: 9lzcjoh3yd
+                      name: ''
+                      hasAll: true
+                      visible: true
+                      levels:
+                        - __id__: 05TtGRavXk
+                          name: Customer Name
+                          caption: 名称
+                          column: customer_name
+                          type: String
+                          visible: true
+                          semantics: null
+                          keyExpression: null
+                          nameExpression: null
+                          captionExpression: null
+                          ordinalExpression: null
+                          parentExpression: null
+                          closure: null
+                          properties: null
+                  semantics: null
+                - __id__: lp0E7upF79
+                  name: Category
+                  caption: 类别
+                  hierarchies:
+                    - __id__: e9hkNkZ1eZ
+                      name: ''
+                      hasAll: true
+                      visible: true
+                      levels:
+                        - __id__: xsgYP3hOWi
+                          name: Category
+                          caption: 类别
+                          column: category
+                          type: String
+                          visible: true
+                          semantics: null
+                          keyExpression: null
+                          nameExpression: null
+                          captionExpression: null
+                          ordinalExpression: null
+                          parentExpression: null
+                          closure: null
+                          properties: null
+                        - __id__: C5oizj2F0g
+                          name: Sub Category
+                          visible: true
+                          column: sub_category
+                          semantics: null
+                          keyExpression: null
+                          nameExpression: null
+                          captionExpression: null
+                          ordinalExpression: null
+                          parentExpression: null
+                          closure: null
+                          properties: null
+                          caption: 子类
+                  semantics: null
+                - __id__: zNOUmpCAZh
+                  name: Region
+                  caption: 地区
+                  hierarchies:
+                    - __id__: UXfUqH77Fk
+                      name: ''
+                      hasAll: true
+                      visible: true
+                      levels:
+                        - __id__: NypgEWEist
+                          name: Region
+                          caption: 地区
+                          column: region
+                          type: null
+                          visible: true
+                          semantics: null
+                          keyExpression: null
+                          nameExpression: null
+                          captionExpression: null
+                          ordinalExpression: null
+                          parentExpression: null
+                          closure: null
+                          properties: null
+                          uniqueMembers: true
+                        - __id__: jbRJTky9Am
+                          name: City
+                          visible: true
+                          column: city
+                          semantics: null
+                          keyExpression: null
+                          nameExpression: null
+                          captionExpression: null
+                          ordinalExpression: null
+                          parentExpression: null
+                          closure: null
+                          properties: null
+                          caption: 城市
+                      tables: []
+                  semantics: null
+              measures:
+                - __id__: T5TBp7Hldm
+                  name: Sales
+                  caption: 销售额
+                  column: sales
+                  aggregator: sum
+                  visible: true
+                  measureExpression: null
+                - __id__: bFxo1jM499
+                  name: Discount
+                  caption: 折扣
+                  column: discount
+                  aggregator: avg
+                  visible: true
+                  measureExpression: null
+                - __id__: mMNL6PtLqR
+                  name: Profit
+                  caption: 利润
+                  column: profit
+                  aggregator: sum
+                  visible: true
+                  measureExpression: null
+              visible: true
+              enabled: true
+              cache: true
+      preferences:
+        enableCache: true
+        expires: 8640000
+        language: zh-CN
+      roles: []
+  story:
+    - name: Demo - 新零售交易大屏
+      description: 新零售交易大屏提供了强大的销售区域分析功能，能够深入了解不同地区和产品类型的销售情况。该大屏展示了关键的销售指标，包括销售额、利润和单价等重要度量。
+      thumbnail: https://metad-oss.oss-cn-shanghai.aliyuncs.com/screenshots/2023/05/23/d600870a-7a7b-4aa8-98f8-b446f41f8618/metad-screenshots-1684825857-20.png
+      status: RELEASED
+      businessAreaId: Demo - Retail
+      models:
+        - key: 03hDiK8cWq
+      options:
+        options:
+          preferences:
+            storyStyling:
+              padding: 10
+              borderRadius: null
+              backgroundColor: '#050C1B'
+              backgroundImageObj:
+                id: 516d689c-0abb-4500-a287-693c779b28ac
+                createdById: c90c04f1-37dd-4655-94bb-069b3be6ebbb
+                updatedById: c90c04f1-37dd-4655-94bb-069b3be6ebbb
+                createdAt: '2023-05-22T07:39:23.491Z'
+                updatedAt: '2023-05-22T07:39:23.491Z'
+                tenantId: d600870a-7a7b-4aa8-98f8-b446f41f8618
+                organizationId: null
+                file: >-
+                  screenshots/2023/05/22/d600870a-7a7b-4aa8-98f8-b446f41f8618/metad-screenshots-1684741163-150.jpeg
+                url: >-
+                  https://metad-oss.oss-cn-shanghai.aliyuncs.com/screenshots/2023/05/22/d600870a-7a7b-4aa8-98f8-b446f41f8618/metad-screenshots-1684741163-150.jpeg
+                thumb: >-
+                  screenshots/2023/05/22/d600870a-7a7b-4aa8-98f8-b446f41f8618/thumb-2fc1778adc9adbdfa2f751beeb7d52f25dd7db4d.jpeg
+                recordedAt: '2023-05-22T07:39:23.490Z'
+                deletedAt: null
+                size: 0
+                storageProvider: OSS
+                fileUrl: >-
+                  http://metad-oss.oss-cn-shanghai.aliyuncs.com/screenshots/2023/05/22/d600870a-7a7b-4aa8-98f8-b446f41f8618/metad-screenshots-1684741163-150.jpeg?OSSAccessKeyId=LTAI5tPsqnJLypk93kyvR1to&Expires=1684742964&Signature=Y7GFKGsxjZYV7JAyQF3Ax70Wz1w%3D
+                thumbUrl: >-
+                  http://metad-oss.oss-cn-shanghai.aliyuncs.com/screenshots/2023/05/22/d600870a-7a7b-4aa8-98f8-b446f41f8618/thumb-2fc1778adc9adbdfa2f751beeb7d52f25dd7db4d.jpeg?OSSAccessKeyId=LTAI5tPsqnJLypk93kyvR1to&Expires=1684742964&Signature=Zk9kT%2BrSSjjuj4wBjo%2BdFCGldpo%3D
+              backgroundSize: 100% 100%
+              borderColor: null
+              borderWidth: null
+              borderStyle: null
+              borderImageObj: null
+              borderImageSlice: null
+              shadowColor: null
+              shadowOffsetX: null
+              shadowOffsetY: null
+              shadowBlur: null
+              shadowSpread: null
+              color: '#989898'
+              fontSize: null
+              textAlign: null
+              fontFamily: null
+              fontWeight: null
+            __showstory__: true
+            __showpage__: true
+            story:
+              width: 1512
+              height: 945
+              tabBar: hidden
+              __showappearance__: true
+              __showstyling__: false
+              appearance:
+                displayDensity: cosy
+            page:
+              __showdefaultGridOptions__: true
+              defaultGridOptions:
+                gridType: fit
+                setGridSize: false
+                fixedColWidth: 20
+                fixedRowHeight: 20
+                minCols: 60
+                minRows: 40
+                displayGrid: onDrag&Resize
+                swapWhileDragging: true
+                disablePushOnDrag: true
+                allowMultiLayer: true
+                defaultLayerIndex: 5
+                maxLayerIndex: 25
+                baseLayerIndex: 1
+          themeName: dark
+          echartsTheme:
+            dark:
+              grid:
+                left: 5
+                right: 5
+                top: 5
+                bottom: 5
+              color:
+                - rgb(89, 161, 207)
+                - rgb(81, 152, 201)
+                - rgb(73, 142, 194)
+                - rgb(65, 133, 188)
+                - rgb(57, 124, 181)
+                - rgb(49, 114, 174)
+                - rgb(41, 105, 168)
+                - rgb(33, 96, 161)
+                - rgb(25, 86, 154)
+                - rgb(17, 77, 148)
+              textStyle: {}
+              title:
+                textStyle:
+                  color: '#ffffff'
+                subtextStyle:
+                  color: '#cccccc'
+              line:
+                itemStyle:
+                  borderWidth: '2'
+                lineStyle:
+                  width: '3'
+                symbolSize: '7'
+                symbol: circle
+                smooth: true
+              radar:
+                itemStyle:
+                  borderWidth: '2'
+                lineStyle:
+                  width: '3'
+                symbolSize: '7'
+                symbol: circle
+                smooth: true
+              bar:
+                itemStyle:
+                  barBorderWidth: 0
+                  barBorderColor: '#ccc'
+              pie:
+                itemStyle:
+                  borderWidth: 0
+                  borderColor: '#ccc'
+              scatter:
+                itemStyle:
+                  borderWidth: 0
+                  borderColor: '#ccc'
+              boxplot:
+                itemStyle:
+                  borderWidth: 0
+                  borderColor: '#ccc'
+              parallel:
+                itemStyle:
+                  borderWidth: 0
+                  borderColor: '#ccc'
+              sankey:
+                itemStyle:
+                  borderWidth: 0
+                  borderColor: '#ccc'
+              funnel:
+                itemStyle:
+                  borderWidth: 0
+                  borderColor: '#ccc'
+              gauge:
+                itemStyle:
+                  borderWidth: 0
+                  borderColor: '#ccc'
+              candlestick:
+                itemStyle:
+                  color: '#e098c7'
+                  color0: transparent
+                  borderColor: '#e098c7'
+                  borderColor0: '#8fd3e8'
+                  borderWidth: '2'
+              graph:
+                itemStyle:
+                  borderWidth: 0
+                  borderColor: '#ccc'
+                lineStyle:
+                  width: 1
+                  color: '#aaa'
+                symbolSize: '7'
+                symbol: circle
+                smooth: true
+                color:
+                  - '#9b8bba'
+                  - '#e098c7'
+                  - '#8fd3e8'
+                  - '#71669e'
+                  - '#cc70af'
+                  - '#7cb4cc'
+                label:
+                  color: '#eee'
+              map:
+                itemStyle:
+                  areaColor: '#eee'
+                  borderColor: '#444'
+                  borderWidth: 0.5
+                label:
+                  color: '#000'
+                emphasis:
+                  itemStyle:
+                    areaColor: '#e098c7'
+                    borderColor: '#444'
+                    borderWidth: 1
+                  label:
+                    color: '#ffffff'
+              geo:
+                itemStyle:
+                  areaColor: '#eee'
+                  borderColor: '#444'
+                  borderWidth: 0.5
+                label:
+                  color: '#000'
+                emphasis:
+                  itemStyle:
+                    areaColor: '#e098c7'
+                    borderColor: '#444'
+                    borderWidth: 1
+                  label:
+                    color: '#ffffff'
+              categoryAxis:
+                axisLine:
+                  show: true
+                  lineStyle:
+                    color: '#cccccc'
+                axisTick:
+                  show: false
+                  lineStyle:
+                    color: '#333'
+                axisLabel:
+                  show: true
+                  color: '#cccccc'
+                splitLine:
+                  show: false
+                  lineStyle:
+                    color:
+                      - '#eeeeee'
+                      - '#333333'
+                splitArea:
+                  show: true
+                  areaStyle:
+                    color:
+                      - rgba(250,250,250,0.05)
+                      - rgba(200,200,200,0.02)
+              valueAxis:
+                axisLine:
+                  show: true
+                  lineStyle:
+                    color: '#cccccc'
+                axisTick:
+                  show: false
+                  lineStyle:
+                    color: '#333'
+                axisLabel:
+                  show: true
+                  color: '#cccccc'
+                splitLine:
+                  show: false
+                  lineStyle:
+                    color:
+                      - '#eeeeee'
+                      - '#333333'
+                splitArea:
+                  show: true
+                  areaStyle:
+                    color:
+                      - rgba(250,250,250,0.05)
+                      - rgba(200,200,200,0.02)
+              logAxis:
+                axisLine:
+                  show: true
+                  lineStyle:
+                    color: '#cccccc'
+                axisTick:
+                  show: false
+                  lineStyle:
+                    color: '#333'
+                axisLabel:
+                  show: true
+                  color: '#cccccc'
+                splitLine:
+                  show: false
+                  lineStyle:
+                    color:
+                      - '#eeeeee'
+                      - '#333333'
+                splitArea:
+                  show: true
+                  areaStyle:
+                    color:
+                      - rgba(250,250,250,0.05)
+                      - rgba(200,200,200,0.02)
+              timeAxis:
+                axisLine:
+                  show: true
+                  lineStyle:
+                    color: '#cccccc'
+                axisTick:
+                  show: false
+                  lineStyle:
+                    color: '#333'
+                axisLabel:
+                  show: true
+                  color: '#cccccc'
+                splitLine:
+                  show: false
+                  lineStyle:
+                    color:
+                      - '#eeeeee'
+                      - '#333333'
+                splitArea:
+                  show: true
+                  areaStyle:
+                    color:
+                      - rgba(250,250,250,0.05)
+                      - rgba(200,200,200,0.02)
+              toolbox:
+                iconStyle:
+                  borderColor: '#999'
+                emphasis:
+                  iconStyle:
+                    borderColor: '#666'
+              legend:
+                textStyle:
+                  color: '#cccccc'
+              tooltip:
+                axisPointer:
+                  lineStyle:
+                    color: '#cccccc'
+                    width: 1
+                  crossStyle:
+                    color: '#cccccc'
+                    width: 1
+              timeline:
+                lineStyle:
+                  color: '#8fd3e8'
+                  width: 1
+                itemStyle:
+                  color: '#8fd3e8'
+                  borderWidth: 1
+                controlStyle:
+                  color: '#8fd3e8'
+                  borderColor: '#8fd3e8'
+                  borderWidth: 0.5
+                checkpointStyle:
+                  color: '#8fd3e8'
+                  borderColor: '#8a7ca8'
+                label:
+                  color: '#8fd3e8'
+                emphasis:
+                  itemStyle:
+                    color: '#8fd3e8'
+                  controlStyle:
+                    color: '#8fd3e8'
+                    borderColor: '#8fd3e8'
+                    borderWidth: 0.5
+                  label:
+                    color: '#8fd3e8'
+              visualMap:
+                color:
+                  - '#8a7ca8'
+                  - '#e098c7'
+                  - '#cceffa'
+              dataZoom:
+                backgroundColor: rgba(0,0,0,0)
+                dataBackgroundColor: rgba(255,255,255,0.3)
+                fillerColor: rgba(167,183,204,0.4)
+                handleColor: '#a7b7cc'
+                handleSize: 100%
+                textStyle:
+                  color: '#333'
+              markPoint:
+                label:
+                  color: '#eee'
+                emphasis:
+                  label:
+                    color: '#eee'
+          advancedStyle: >-
+            @import
+            url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
+            .nx-kpi--kpi {
+              align-items: start;
+            }
+
+
+            .nx-kpi--content .nx-kpi--data-point {
+            align-items: center;
+            }
+
+
+            .nx-kpi--kpi .nx-object-number--value {
+                font-family: Oswald;
+                background: linear-gradient(to right, rgb(225, 237, 248), rgb(106, 168, 235));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+
+            .nx-kpi--kpi .nx-object-number--value .nx-object-number--short-unit {
+                color: rgb(225, 237, 248);
+                -webkit-text-fill-color: rgb(225, 237, 248);
+            }
+
+
+            .nx-indicator__kpi-maxnum {
+                font-family: Oswald;
+                background: linear-gradient(to right, rgb(225, 237, 248), rgb(11, 77, 148));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+          locale: zh-Hans
+          fullscreen: true
+      points:
+        - name: 概览
+          key: 6TZbxgT8dJ
+          options:
+            type: 1
+            key: 6TZbxgT8dJ
+            index: 0
+            responsive: null
+            gridOptions: {}
+            styling:
+              padding: null
+              borderRadius: null
+              backgroundColor: null
+              backgroundImageObj: null
+              backgroundSize: 100% 100%
+              borderColor: null
+              borderWidth: null
+              borderStyle: null
+              borderImageObj: null
+              borderImageSlice: null
+              shadowColor: null
+              shadowOffsetX: null
+              shadowOffsetY: null
+              shadowBlur: null
+              shadowSpread: null
+              color: null
+              fontSize: null
+              textAlign: null
+              fontFamily: null
+              fontWeight: null
+          widgets:
+            - key: eq2XQ68xT8
+              name: null
+              options:
+                component: Swiper
+                title: 未命名
+                dataSettings:
+                  dataSource: 新零售交易模型
+                  entitySet: ''
+                position:
+                  rows: 17
+                  cols: 30
+                  x: 15
+                  'y': 10
+                  layerIndex: 24
+                options:
+                  slidesPerView: '1'
+                  spaceBetween: 10
+                  direction: vertical
+                  loop: false
+                  effect: coverflow
+                  slides:
+                    - type: AnalyticalCard
+                      options:
+                        title: 各类别产品销售额占比走势
+                        dataSettings:
+                          dataSource: 03hDiK8cWq
+                          entitySet: Supermart Grocery Sales
+                          chartAnnotation:
+                            chartType:
+                              type: Bar
+                              orient: null
+                              variant: null
+                              scripts: null
+                              chartOptions: null
+                            measures:
+                              - name: null
+                                dimension: Measures
+                                hierarchy: null
+                                level: null
+                                exclude: null
+                                members: null
+                                measure: Sales
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting:
+                                  shortNumber: true
+                                  decimal: null
+                                  unit: null
+                                  useUnderlyingUnit: false
+                                parameter: null
+                                order: null
+                            dimensions:
+                              - name: null
+                                dimension: '[Time Calendar]'
+                                hierarchy: '[Time Calendar]'
+                                level: '[Time Calendar].[month]'
+                                exclude: null
+                                members: null
+                                measure: null
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: null
+                              - name: null
+                                dimension: '[Category]'
+                                hierarchy: '[Category]'
+                                level: '[Category].[Category]'
+                                exclude: null
+                                members: null
+                                measure: null
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: null
+                                role: Stacked
+                          __showselectionVariant__: true
+                          selectionVariant:
+                            selectOptions:
+                              - dimension:
+                                  dimension: '[Time Calendar]'
+                                  hierarchy: '[Time Calendar]'
+                                currentDate: TODAY
+                                ranges:
+                                  - type: Standard
+                                    granularity: Month
+                                    current:
+                                      direction: null
+                                      granularity: null
+                                      amount: null
+                                    lookBack: 24
+                                    lookAhead: 0
+                                    formatter: null
+                                    result:
+                                      - '202105'
+                                      - '202305'
+                                allowModifySelections: null
+                                selctionType: null
+                        options: {}
+                        chartSettings:
+                          chartTypes: []
+                        chartOptions:
+                          __showgrid__: true
+                          grid:
+                            top: 30
+                            right: 10
+                            backgroundColor: ''
+                            borderColor: ''
+                            shadowColor: ''
+                          __showcategoryAxis__: true
+                          categoryAxis:
+                            __showaxisLabel__: true
+                            axisLabel:
+                              interval: '0'
+                              rotate: 45
+                              color: ''
+                              borderColor: ''
+                              shadowColor: ''
+                              textBorderColor: ''
+                              textShadowColor: ''
+                          __showlegend__: true
+                          legend:
+                            inactiveColor: ''
+                            inactiveBorderColor: ''
+                    - type: AnalyticalCard
+                      options:
+                        title: 类别间利润比较
+                        dataSettings:
+                          dataSource: 03hDiK8cWq
+                          entitySet: Supermart Grocery Sales
+                          chartAnnotation:
+                            chartType:
+                              type: ThemeRiver
+                              orient: null
+                              variant: null
+                              scripts: null
+                              chartOptions: null
+                            measures:
+                              - name: null
+                                dimension: Measures
+                                hierarchy: null
+                                level: null
+                                exclude: null
+                                members: null
+                                measure: Profit
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: null
+                                palette:
+                                  name: Blues
+                            dimensions:
+                              - name: null
+                                dimension: '[Time Calendar]'
+                                hierarchy: '[Time Calendar]'
+                                level: '[Time Calendar].[month]'
+                                exclude: null
+                                members: null
+                                measure: null
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: null
+                              - name: null
+                                dimension: '[Category]'
+                                hierarchy: '[Category]'
+                                level: '[Category].[Category]'
+                                exclude: null
+                                members: null
+                                measure: null
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: null
+                                role: Stacked
+                          __showselectionVariant__: true
+                          selectionVariant:
+                            selectOptions:
+                              - dimension:
+                                  dimension: '[Time Calendar]'
+                                  hierarchy: '[Time Calendar]'
+                                currentDate: TODAY
+                                ranges:
+                                  - type: Standard
+                                    granularity: Month
+                                    current:
+                                      direction: null
+                                      granularity: null
+                                      amount: null
+                                    lookBack: 24
+                                    lookAhead: 0
+                                    formatter: null
+                                    result:
+                                      - '202105'
+                                      - '202305'
+                                allowModifySelections: null
+                                selctionType: null
+                        options: {}
+                        chartSettings:
+                          chartTypes: []
+                        chartOptions:
+                          __showsingleAxis__: true
+                          singleAxis:
+                            bottom: 21
+                  enableAutoplay: true
+                  enablePagination: true
+                  autoplay:
+                    delay: 5000
+                    pauseOnMouseEnter: false
+                    stopOnLastSlide: false
+                    waitForTransition: true
+                  pagination:
+                    enabled: true
+                    type: fraction
+                  breakpoints: []
+                styling:
+                  slide:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: '#00000000'
+                    backgroundImageObj:
+                      url: /assets/images/bg/bg_3.png
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: 10
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: 20
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: null
+                    fontSize: null
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+              visibility: null
+            - id: 1ff664ae-1af7-4493-a0fd-57337f8e72e1
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.691Z'
+              updatedAt: '2023-07-06T04:07:08.691Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: BZG3Z7Wfom
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: AnalyticalCard
+                title: 交易类别排名
+                dataSettings:
+                  dataSource: 03hDiK8cWq
+                  entitySet: Supermart Grocery Sales
+                  chartAnnotation:
+                    chartType:
+                      type: Bar
+                      orient: horizontal
+                      variant: Doughnut
+                      scripts: null
+                      chartOptions: null
+                    measures:
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: Sales
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: ASC
+                        palette:
+                          name: null
+                          reverse: false
+                    dimensions:
+                      - name: null
+                        dimension: '[Category]'
+                        hierarchy: '[Category]'
+                        level: '[Category].[Category]'
+                        exclude: null
+                        members: null
+                        measure: null
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                position:
+                  rows: 18
+                  cols: 14
+                  x: 45
+                  'y': 21
+                options: {}
+                chartSettings:
+                  chartTypes: []
+                chartOptions:
+                  __showseriesStyle__: true
+                  seriesStyle:
+                    __showitemStyle__: true
+                    itemStyle:
+                      color:
+                        x: 1
+                        'y': 0
+                        x2: 0
+                        y2: 0
+                        colorStops:
+                          - offset: 0
+                            color: rgba(11, 77, 148, 1)
+                          - offset: 0.98
+                            color: rgba(11, 77, 148, 0.5)
+                      borderColor: ''
+                      shadowColor: ''
+                    select:
+                      itemStyle:
+                        color: ''
+                        borderColor: ''
+                        shadowColor: ''
+                    emphasis:
+                      itemStyle:
+                        color: ''
+                        borderColor: ''
+                        shadowColor: ''
+                    markLine:
+                      lineStyle:
+                        color: ''
+                        shadowColor: ''
+                    backgroundStyle:
+                      color: ''
+                      borderColor: ''
+                      shadowColor: ''
+                  __showgrid__: true
+                  grid:
+                    top: 21
+                    bottom: 3
+                    backgroundColor: ''
+                    borderColor: ''
+                    shadowColor: ''
+                  __showcategoryAxis__: true
+                  categoryAxis:
+                    position: null
+                  __showValueAxis__: true
+                  valueAxis:
+                    show: false
+                    scale: true
+                  __showtooltip__: true
+                  tooltip:
+                    appendToBody: true
+                    axisPointer: {}
+                    textStyle:
+                      color: ''
+                      borderColor: ''
+                      shadowColor: ''
+                      textBorderColor: ''
+                      textShadowColor: ''
+                  __showlegend__: true
+                  legend:
+                    type: plain
+                    orient: vertical
+                    align: right
+                    right: 0
+                    inactiveColor: ''
+                    inactiveBorderColor: ''
+                styling:
+                  component:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj:
+                      url: /assets/images/bg/bg_3.png
+                    backgroundSize: 100% 100%
+                    borderColor: transparent
+                    borderWidth: 10
+                    borderStyle: null
+                    borderImageObj:
+                      url: /assets/images/border/blue_4.png
+                    borderImageSlice: 20
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: null
+                    fontSize: null
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+              visibility: null
+            - id: e26c4701-585b-48b0-a2c4-ded3b8128c5f
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.700Z'
+              updatedAt: '2023-07-06T04:07:08.700Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: WlW0TESjfv
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: KpiCard
+                title: 未命名
+                dataSettings:
+                  dataSource: 03hDiK8cWq
+                  entitySet: Supermart Grocery Sales
+                  KPIAnnotation:
+                    DataPoint:
+                      Title: 果蔬销售额
+                      Value:
+                        name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_RETAIL_FV_SALES
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                    AdditionalDataPoints: []
+                position:
+                  rows: 6
+                  cols: 6
+                  x: 15
+                  'y': 4
+                options:
+                  shortNumber: true
+                  digitsInfo: 0.1-2
+                styling:
+                  component:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj:
+                      url: /assets/images/bg/kpi_1.png
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: '#c2f4fb'
+                    fontSize: 22
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+                  title:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj: null
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: null
+                    fontSize: 14
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+              visibility: null
+            - id: fc5aad76-2dba-47e2-aa59-3bc9c6233a35
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.709Z'
+              updatedAt: '2023-07-06T04:07:08.709Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: POvLWRUY7e
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: KpiCard
+                title: 未命名
+                dataSettings:
+                  dataSource: 03hDiK8cWq
+                  entitySet: Supermart Grocery Sales
+                  KPIAnnotation:
+                    DataPoint:
+                      Title: 总销售额
+                      Value:
+                        name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_RETAIL_SALES
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                    AdditionalDataPoints: []
+                position:
+                  rows: 6
+                  cols: 6
+                  x: 33
+                  'y': 4
+                options:
+                  shortNumber: true
+                  digitsInfo: 0.1-2
+                styling:
+                  component:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj:
+                      url: /assets/images/bg/kpi_1.png
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: '#c2f4fb'
+                    fontSize: 22
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+                  title:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj: null
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: null
+                    fontSize: 14
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+              visibility: null
+            - id: 3805b10e-160a-430b-9e37-98df4c34fa0f
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.718Z'
+              updatedAt: '2023-07-06T04:07:08.718Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: F23YcTSpmD
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: AnalyticalCard
+                title: 销售额与利润走势
+                dataSettings:
+                  dataSource: 03hDiK8cWq
+                  entitySet: Supermart Grocery Sales
+                  chartAnnotation:
+                    chartType:
+                      type: Line
+                      orient: vertical
+                      variant: Doughnut
+                      scripts: null
+                      chartOptions: null
+                    measures:
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: Sales
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting:
+                          shortNumber: true
+                          decimal: null
+                          unit: null
+                          useUnderlyingUnit: false
+                        parameter: null
+                        order: ASC
+                        palette:
+                          name: null
+                          reverse: false
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: Profit
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                    dimensions:
+                      - name: null
+                        dimension: '[Category]'
+                        hierarchy: '[Category]'
+                        level: '[Category].[Category]'
+                        exclude: null
+                        members: null
+                        measure: null
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                position:
+                  rows: 13
+                  cols: 14
+                  x: 1
+                  'y': 14
+                options: {}
+                chartSettings:
+                  chartTypes: []
+                chartOptions:
+                  __showgrid__: true
+                  grid:
+                    containLabel: true
+                    top: 21
+                    right: 1
+                    bottom: 3
+                    left: 4
+                    backgroundColor: ''
+                    borderColor: ''
+                    shadowColor: ''
+                  __showcategoryAxis__: true
+                  categoryAxis:
+                    position: null
+                  __showValueAxis__: true
+                  valueAxis:
+                    show: true
+                    scale: true
+                  __showseriesStyle__: true
+                  seriesStyle:
+                    __showitemStyle__: false
+                    __showareaStyle__: true
+                    areaStyle:
+                      color:
+                        x: 0
+                        'y': 0
+                        x2: 0
+                        y2: 1
+                        colorStops:
+                          - offset: 0
+                            color: rgba(11, 77, 148, 1)
+                          - offset: 0.98
+                            color: rgba(11, 77, 148, 0)
+                      shadowColor: ''
+                  __showtooltip__: true
+                  tooltip:
+                    appendToBody: true
+                    axisPointer: {}
+                    textStyle:
+                      color: ''
+                      borderColor: ''
+                      shadowColor: ''
+                      textBorderColor: ''
+                      textShadowColor: ''
+                  __showlegend__: true
+                  legend:
+                    type: plain
+                    orient: horizontal
+                    align: right
+                    right: 0
+                    inactiveColor: ''
+                    inactiveBorderColor: ''
+                styling:
+                  component:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj:
+                      url: /assets/images/bg/bg_3.png
+                    backgroundSize: 100% 100%
+                    borderColor: transparent
+                    borderWidth: 10
+                    borderStyle: null
+                    borderImageObj:
+                      url: /assets/images/border/blue_4.png
+                    borderImageSlice: 20
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: null
+                    fontSize: null
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+              visibility: null
+            - id: 6c777a78-9e6a-4fd0-9000-08ba29e24fe2
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.738Z'
+              updatedAt: '2023-07-06T04:07:08.738Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: EHoe1yXiOr
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: AnalyticalGrid
+                title: 未命名
+                dataSettings:
+                  dataSource: 03hDiK8cWq
+                  entitySet: Supermart Grocery Sales
+                  analytics:
+                    rows:
+                      - name: null
+                        dimension: '[Region]'
+                        hierarchy: '[Region]'
+                        level: '[Region].[Region]'
+                        exclude: null
+                        members: null
+                        measure: null
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                    columns:
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: Sales
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: DESC
+                        bar: true
+                        palette:
+                          name: Blues
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: Profit
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_RETAIL_FV_SALES
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_BAKERY_TRAN_VOL
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_RETAIL_BAKERY_SALES
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_RETAIL_BEVERAGES_PROFIT
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_RETAIL_DISCOUNT
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_RETAIL_UNIT_PRICE
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                position:
+                  rows: 12
+                  cols: 35
+                  x: 10
+                  'y': 27
+                options:
+                  strip: true
+              visibility: null
+            - id: 3ee665fa-3d52-4920-a745-7c8a8c9d56a9
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.749Z'
+              updatedAt: '2023-07-06T04:07:08.749Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: cyLff8XeUF
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: Text
+                title: 未命名
+                dataSettings:
+                  dataSource: 新零售交易模型
+                  entitySet: ''
+                position:
+                  rows: 3
+                  cols: 10
+                  x: 25
+                  'y': 0
+                options:
+                  text: 新零售交易大屏
+                styling:
+                  component:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj: null
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: '#00c8f7'
+                    fontSize: 28
+                    textAlign: null
+                    fontFamily: Lato, 'Noto Serif SC', monospace
+                    fontWeight: bolder
+                tenant:
+                  id: d600870a-7a7b-4aa8-98f8-b446f41f8618
+                organization:
+                  id: c6aec480-b0c5-41df-8087-f091e28b46fe
+                createdBy:
+                  id: c90c04f1-37dd-4655-94bb-069b3be6ebbb
+                updatedBy:
+                  id: c90c04f1-37dd-4655-94bb-069b3be6ebbb
+              visibility: null
+            - id: 265ffb3e-777f-430d-b962-027755f4a6aa
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.759Z'
+              updatedAt: '2023-07-06T04:07:08.759Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: wWHnHXlybg
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: AnalyticalCard
+                title: 交易地区占比
+                dataSettings:
+                  dataSource: 03hDiK8cWq
+                  entitySet: Supermart Grocery Sales
+                  chartAnnotation:
+                    chartType:
+                      type: Pie
+                      orient: null
+                      variant: Doughnut
+                      scripts: null
+                      chartOptions: null
+                    measures:
+                      - name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: Sales
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: DESC
+                        palette:
+                          name: Blues
+                          reverse: false
+                    dimensions:
+                      - name: null
+                        dimension: '[Region]'
+                        hierarchy: '[Region]'
+                        level: '[Region].[Region]'
+                        exclude: null
+                        members: null
+                        measure: null
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                position:
+                  rows: 11
+                  cols: 14
+                  x: 1
+                  'y': 3
+                options: {}
+                chartSettings:
+                  chartTypes: []
+                chartOptions:
+                  __showlegend__: true
+                  legend:
+                    type: plain
+                    orient: vertical
+                    align: right
+                    right: 0
+                    inactiveColor: ''
+                    inactiveBorderColor: ''
+                styling:
+                  component:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj: null
+                    backgroundSize: 100% 100%
+                    borderColor: transparent
+                    borderWidth: 10
+                    borderStyle: null
+                    borderImageObj:
+                      url: /assets/images/border/blue_4.png
+                    borderImageSlice: 20
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: null
+                    fontSize: null
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+              visibility: null
+            - id: 856bb89e-c5d2-42a8-85c4-60ca9c500a0c
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: 3896466f-360c-4059-b80d-38672152ca1d
+              createdAt: '2023-07-06T04:07:08.728Z'
+              updatedAt: '2023-07-12T08:25:42.696Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: MDXXR9FFuF
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: InputControl
+                dataSettings:
+                  dataSource: 03hDiK8cWq
+                  entitySet: Supermart Grocery Sales
+                  dimension:
+                    name: null
+                    dimension: '[Category]'
+                    hierarchy: '[Category]'
+                    level: null
+                    exclude: null
+                    members: null
+                    measure: null
+                    properties: null
+                    memberCaption: null
+                    displayBehaviour: null
+                    displayHierarchy: null
+                    unbookedData: null
+                    zeroSuppression: true
+                    formatting: null
+                    parameter: null
+                    order: null
+                position:
+                  rows: 12
+                  cols: 9
+                  x: 1
+                  'y': 27
+                options:
+                  searchable: true
+              visibility: null
+            - id: 8a4a243d-374d-4826-bfa3-6922be300464
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.768Z'
+              updatedAt: '2023-07-06T04:07:08.768Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: FzfGlRfnny
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: KpiCard
+                title: 未命名
+                dataSettings:
+                  dataSource: 03hDiK8cWq
+                  entitySet: Supermart Grocery Sales
+                  KPIAnnotation:
+                    DataPoint:
+                      Title: 面包销售额
+                      Value:
+                        name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_RETAIL_BAKERY_SALES
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                    AdditionalDataPoints: []
+                position:
+                  rows: 6
+                  cols: 6
+                  x: 21
+                  'y': 4
+                options:
+                  shortNumber: true
+                  digitsInfo: 0.1-2
+                styling:
+                  component:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj:
+                      url: /assets/images/bg/kpi_1.png
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: '#c2f4fb'
+                    fontSize: 22
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+                  title:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj: null
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: null
+                    fontSize: 14
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+              visibility: null
+            - id: cd7560ce-54f1-458c-8ca9-6ec447657be6
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.779Z'
+              updatedAt: '2023-07-06T04:07:08.779Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: xZQbQLozhQ
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: KpiCard
+                title: 未命名
+                dataSettings:
+                  dataSource: 03hDiK8cWq
+                  entitySet: Supermart Grocery Sales
+                  KPIAnnotation:
+                    DataPoint:
+                      Title: 净利润
+                      Value:
+                        name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_RETAIL_PROFIT
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                    AdditionalDataPoints: []
+                position:
+                  rows: 6
+                  cols: 6
+                  x: 39
+                  'y': 4
+                options:
+                  shortNumber: true
+                  digitsInfo: 0.1-2
+                styling:
+                  component:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj:
+                      url: /assets/images/bg/kpi_1.png
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: '#c2f4fb'
+                    fontSize: 22
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+                  title:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj: null
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: null
+                    fontSize: 14
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+              visibility: null
+            - id: a95b5d5a-b566-4d8f-ad19-8c2e8e8fecbe
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.790Z'
+              updatedAt: '2023-07-06T04:07:08.790Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: y59CxIGKnT
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: Swiper
+                title: 未命名
+                dataSettings:
+                  dataSource: 新零售交易模型
+                  entitySet: ''
+                position:
+                  rows: 18
+                  cols: 14
+                  x: 45
+                  'y': 3
+                options:
+                  slidesPerView: '1'
+                  spaceBetween: 10
+                  direction: horizontal
+                  grabCursor: true
+                  loop: false
+                  effect: cube
+                  slides:
+                    - type: AnalyticalCard
+                      options:
+                        title: 销售额前10客户
+                        dataSettings:
+                          dataSource: 03hDiK8cWq
+                          entitySet: Supermart Grocery Sales
+                          chartAnnotation:
+                            chartType:
+                              type: Bar
+                              orient: horizontal
+                              variant: null
+                              scripts: null
+                              chartOptions: null
+                            measures:
+                              - name: null
+                                dimension: Measures
+                                hierarchy: null
+                                level: null
+                                exclude: null
+                                members: null
+                                measure: Sales
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: DESC
+                                palette:
+                                  name: null
+                            dimensions:
+                              - name: null
+                                dimension: '[Customer]'
+                                hierarchy: '[Customer]'
+                                level: '[Customer].[Customer Name]'
+                                exclude: null
+                                members: null
+                                measure: null
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: null
+                          __showpresentationVariant__: true
+                          presentationVariant:
+                            maxItems: 10
+                            sortOrder: []
+                            groupBy: []
+                        options: {}
+                        chartSettings:
+                          chartTypes: []
+                        chartOptions:
+                          __showseriesStyle__: true
+                          seriesStyle:
+                            colorBy: data
+                            select:
+                              itemStyle:
+                                color: ''
+                                borderColor: ''
+                                shadowColor: ''
+                            emphasis:
+                              itemStyle:
+                                color: ''
+                                borderColor: ''
+                                shadowColor: ''
+                            markLine:
+                              lineStyle:
+                                color: ''
+                                shadowColor: ''
+                            backgroundStyle:
+                              color: ''
+                              borderColor: ''
+                              shadowColor: ''
+                          __showcategoryAxis__: true
+                          categoryAxis:
+                            inverse: true
+                          __showValueAxis__: true
+                          valueAxis:
+                            splitNumber: 1
+                            scale: true
+                          __showtooltip__: true
+                          tooltip:
+                            appendToBody: true
+                            axisPointer: {}
+                            textStyle:
+                              color: ''
+                              borderColor: ''
+                              shadowColor: ''
+                              textBorderColor: ''
+                              textShadowColor: ''
+                    - type: AnalyticalCard
+                      options:
+                        title: 利润前10客户
+                        dataSettings:
+                          dataSource: 03hDiK8cWq
+                          entitySet: Supermart Grocery Sales
+                          chartAnnotation:
+                            chartType:
+                              type: Bar
+                              orient: horizontal
+                              variant: null
+                              scripts: null
+                              chartOptions: null
+                            measures:
+                              - name: null
+                                dimension: Measures
+                                hierarchy: null
+                                level: null
+                                exclude: null
+                                members: null
+                                measure: Profit
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: DESC
+                                palette:
+                                  name: null
+                            dimensions:
+                              - name: null
+                                dimension: '[Customer]'
+                                hierarchy: '[Customer]'
+                                level: '[Customer].[Customer Name]'
+                                exclude: null
+                                members: null
+                                measure: null
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: null
+                          __showpresentationVariant__: true
+                          presentationVariant:
+                            maxItems: 10
+                            sortOrder: []
+                            groupBy: []
+                        options: {}
+                        chartSettings:
+                          chartTypes: []
+                        chartOptions:
+                          __showseriesStyle__: true
+                          seriesStyle:
+                            colorBy: data
+                            select:
+                              itemStyle:
+                                color: ''
+                                borderColor: ''
+                                shadowColor: ''
+                            emphasis:
+                              itemStyle:
+                                color: ''
+                                borderColor: ''
+                                shadowColor: ''
+                            markLine:
+                              lineStyle:
+                                color: ''
+                                shadowColor: ''
+                            backgroundStyle:
+                              color: ''
+                              borderColor: ''
+                              shadowColor: ''
+                          __showcategoryAxis__: true
+                          categoryAxis:
+                            inverse: true
+                          __showValueAxis__: true
+                          valueAxis:
+                            splitNumber: 1
+                            scale: true
+                          __showtooltip__: true
+                          tooltip:
+                            appendToBody: true
+                            axisPointer: {}
+                            textStyle:
+                              color: ''
+                              borderColor: ''
+                              shadowColor: ''
+                              textBorderColor: ''
+                              textShadowColor: ''
+                    - type: AnalyticalCard
+                      options:
+                        title: 地区销售额比例
+                        dataSettings:
+                          dataSource: 03hDiK8cWq
+                          entitySet: Supermart Grocery Sales
+                          chartAnnotation:
+                            chartType:
+                              type: Pie
+                              orient: null
+                              variant: Doughnut
+                              scripts: null
+                              chartOptions: null
+                            measures:
+                              - name: null
+                                dimension: Measures
+                                hierarchy: null
+                                level: null
+                                exclude: null
+                                members: null
+                                measure: Sales
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: null
+                                palette:
+                                  name: null
+                            dimensions:
+                              - name: null
+                                dimension: '[Region]'
+                                hierarchy: '[Region]'
+                                level: '[Region].[Region]'
+                                exclude: null
+                                members: null
+                                measure: null
+                                properties: null
+                                memberCaption: null
+                                displayBehaviour: null
+                                displayHierarchy: null
+                                unbookedData: null
+                                zeroSuppression: true
+                                formatting: null
+                                parameter: null
+                                order: null
+                        options: {}
+                        chartSettings:
+                          chartTypes: []
+                        chartOptions:
+                          __showseriesStyle__: true
+                          seriesStyle:
+                            __showlabel__: true
+                            label:
+                              color: ''
+                              borderColor: ''
+                              shadowColor: ''
+                              textBorderColor: ''
+                              textShadowColor: ''
+                              position: inside
+                          __showtooltip__: true
+                          tooltip:
+                            appendToBody: true
+                            axisPointer: {}
+                            textStyle:
+                              color: ''
+                              borderColor: ''
+                              shadowColor: ''
+                              textBorderColor: ''
+                              textShadowColor: ''
+                  enableAutoplay: true
+                  enablePagination: true
+                  autoplay:
+                    delay: 5000
+                    disableOnInteraction: false
+                    pauseOnMouseEnter: true
+                    waitForTransition: true
+                  pagination:
+                    enabled: true
+                    type: fraction
+                  breakpoints: []
+                styling:
+                  slide:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: '#00000000'
+                    backgroundImageObj:
+                      url: /assets/images/bg/bg_3.png
+                    backgroundSize: 100% 100%
+                    borderColor: transparent
+                    borderWidth: 10
+                    borderStyle: null
+                    borderImageObj:
+                      url: /assets/images/border/blue_4.png
+                    borderImageSlice: 20
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: null
+                    fontSize: null
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+              visibility: null
+            - id: 4f1f8486-9403-4ed9-8094-8a6c487cfdd4
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.803Z'
+              updatedAt: '2023-07-06T04:07:08.803Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: J1tqU5cAWZ
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: KpiCard
+                title: 未命名
+                dataSettings:
+                  dataSource: 03hDiK8cWq
+                  entitySet: Supermart Grocery Sales
+                  KPIAnnotation:
+                    DataPoint:
+                      Title: 总交易量
+                      Value:
+                        name: null
+                        dimension: Measures
+                        hierarchy: null
+                        level: null
+                        exclude: null
+                        members: null
+                        measure: DEMO_TOTAL_TRAN_VOL
+                        properties: null
+                        memberCaption: null
+                        displayBehaviour: null
+                        displayHierarchy: null
+                        unbookedData: null
+                        zeroSuppression: true
+                        formatting: null
+                        parameter: null
+                        order: null
+                    AdditionalDataPoints: []
+                position:
+                  rows: 6
+                  cols: 6
+                  x: 27
+                  'y': 4
+                options:
+                  shortNumber: true
+                  digitsInfo: 0.1-2
+                styling:
+                  component:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj:
+                      url: /assets/images/bg/kpi_1.png
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: '#c2f4fb'
+                    fontSize: 22
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+                  title:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj: null
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: null
+                    fontSize: 14
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+              visibility: null
+            - id: e634e9cd-a234-4019-9ef1-0aaeb4a57299
+              createdById: 3896466f-360c-4059-b80d-38672152ca1d
+              updatedById: null
+              createdAt: '2023-07-06T04:07:08.814Z'
+              updatedAt: '2023-07-06T04:07:08.814Z'
+              tenantId: bad2e04a-0f5b-4e26-bdf4-718d2e6a0c96
+              organizationId: 7290db5a-b998-47ae-b6e3-fdc9e6585f61
+              key: FNC3JVQOPr
+              name: null
+              storyId: 5a079b49-35e0-42c2-bd9b-fe82cb3dea7a
+              pointId: a24ef4d4-df16-4c8f-aff7-006caea6a134
+              options:
+                component: Text
+                title: 未命名
+                dataSettings:
+                  dataSource: 新零售交易模型
+                  entitySet: ''
+                position:
+                  rows: 2
+                  cols: 10
+                  x: 0
+                  'y': 0
+                options:
+                  text: '@南京元数信息技术有限公司'
+                styling:
+                  component:
+                    padding: null
+                    borderRadius: null
+                    backgroundColor: null
+                    backgroundImageObj: null
+                    backgroundSize: 100% 100%
+                    borderColor: null
+                    borderWidth: null
+                    borderStyle: null
+                    borderImageObj: null
+                    borderImageSlice: null
+                    shadowColor: null
+                    shadowOffsetX: null
+                    shadowOffsetY: null
+                    shadowBlur: null
+                    shadowSpread: null
+                    color: '#5f7190'
+                    fontSize: null
+                    textAlign: null
+                    fontFamily: null
+                    fontWeight: null
+  indicator:
+    - name: Demo - 新零售果蔬销售额
+      code: DEMO_RETAIL_FV_SALES
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 新零售订单中产品类别 "Fruits & Veggies" 的总销售额
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: BASIC
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      filters:
+        - members:
+            - value: '[Fruits & Veggies]'
+              label: Fruits & Veggies
+          dimension:
+            dimension: '[Category]'
+      dimensions:
+        - '[Customer]'
+        - '[Region]'
+        - '[Time Calendar]'
+      measure: Sales
+      formula: ''
+      unit: ¥
+    - name: Demo - 新零售面包交易量
+      code: DEMO_BAKERY_TRAN_VOL
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 新零售订单中产品类别“面包”的交易量
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: DERIVE
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      filters:
+        - members:
+            - value: '[Bakery]'
+              label: Bakery
+          dimension:
+            dimension: '[Category]'
+      dimensions:
+        - '[Customer]'
+        - '[Region]'
+        - '[Time Calendar]'
+      measure: Profit
+      formula: Count([Order ID].[Order ID].Members, ExcludeEmpty)
+      unit: v
+    - name: Demo - 新零售面包销售额
+      code: DEMO_RETAIL_BAKERY_SALES
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 新零售订单中产品类别 Bakery 的总销售额
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: BASIC
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      filters:
+        - members:
+            - value: '[Bakery]'
+              label: Bakery
+          dimension:
+            dimension: '[Category]'
+      dimensions:
+        - '[Customer]'
+        - '[Region]'
+        - '[Time Calendar]'
+      measure: Sales
+      formula: ''
+      unit: ¥
+    - name: Demo - 新零售蛋肉禽净利润
+      code: DEMO_RETAIL_MEAT_PROFIT
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 统计交易订单的蛋肉禽类别的净利润
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: BASIC
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      filters:
+        - members:
+            - value: '[Eggs Meat & Fish]'
+              label: Eggs Meat & Fish
+          dimension:
+            dimension: '[Category]'
+      dimensions:
+        - '[Time Calendar]'
+        - '[Region]'
+        - '[Customer]'
+      measure: Profit
+      unit: $
+    - name: Demo - 新零售饮料净利润
+      code: DEMO_RETAIL_BEVERAGES_PROFIT
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 统计交易订单的饮料类别的净利润
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: BASIC
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      filters:
+        - members:
+            - value: '[Beverages]'
+              label: Beverages
+          dimension:
+            dimension: '[Category]'
+      dimensions:
+        - '[Time Calendar]'
+        - '[Region]'
+        - '[Customer]'
+      measure: Profit
+      unit: $
+    - name: Demo - 新零售面包净利润率
+      code: DEMO_RETAIL_BAKERY_PROFIT_RATE
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 统计交易订单的面包类别的净利润率，净利润/销售额
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: DERIVE
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      filters:
+        - members:
+            - value: '[Bakery]'
+              label: Bakery
+          dimension:
+            dimension: '[Category]'
+        - members:
+            - value: '[All Regions]'
+              label: All Regions
+          dimension:
+            dimension: '[Region]'
+      dimensions:
+        - '[Time Calendar]'
+        - '[Region]'
+        - '[Customer]'
+      measure: Profit
+      formula: '[Measures].[Profit] / [Measures].[Sales]'
+      unit: '%'
+    - name: Demo - 新零售平均折扣率
+      code: DEMO_RETAIL_DISCOUNT
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 按商品分类统计平均折扣率
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: DERIVE
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      dimensions:
+        - '[Category]'
+        - '[Customer]'
+        - '[Region]'
+        - '[Time Calendar]'
+      measure: Profit
+      formula: |-
+        [Measures].[Discount] / Count(
+            [Order ID].[Order ID].Members,
+            ExcludeEmpty
+        )
+      unit: '%'
+    - name: Demo - 新零售客单利润
+      code: DEMO_RETAIL_UNIT_PROFIT
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 净利润/总交易量
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: DERIVE
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      dimensions:
+        - '[Category]'
+        - '[Customer]'
+        - '[Region]'
+        - '[Time Calendar]'
+      measure: Profit
+      formula: |-
+        [Measures].[Profit] / Count(
+            [Order ID].[Order ID].Members,
+            ExcludeEmpty
+        )
+      unit: $
+    - name: Demo - 新零售客单价
+      code: DEMO_RETAIL_UNIT_PRICE
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 总销售额/总交易量
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: DERIVE
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      dimensions:
+        - '[Category]'
+        - '[Customer]'
+        - '[Region]'
+        - '[Time Calendar]'
+      measure: Profit
+      formula: |-
+        [Measures].[Sales] / Count(
+            [Order ID].[Order ID].Members,
+            ExcludeEmpty
+        )
+      unit: $
+    - name: Demo - 新零售净利润
+      code: DEMO_RETAIL_PROFIT
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 统计交易订单的净利润
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: BASIC
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      dimensions:
+        - '[Category]'
+        - '[Customer]'
+        - '[Region]'
+        - '[Time Calendar]'
+      measure: Profit
+      formula: ''
+      unit: $
+    - name: Demo - 新零售净利润率
+      code: DEMO_RETAIL_PROFIT_RATE
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 净利润/销售额
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: DERIVE
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      dimensions:
+        - '[Category]'
+        - '[Customer]'
+        - '[Region]'
+        - '[Time Calendar]'
+      measure: Profit
+      formula: '[Measures].[Profit] / [Measures].[Sales]'
+      unit: '%'
+    - name: Demo - 新零售总销额
+      code: DEMO_RETAIL_SALES
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: null
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: BASIC
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      dimensions:
+        - '[Category]'
+        - '[Customer]'
+        - '[Region]'
+        - '[Time Calendar]'
+      measure: Sales
+      formula: ''
+      unit: null
+    - name: Demo - 新零售总交易量
+      code: DEMO_TOTAL_TRAN_VOL
+      businessAreaId: Demo - Retail
+      isActive: true
+      isApplication: true
+      visible: true
+      business: 新零售订单的总交易量
+      principal: 董新售
+      validity: '2023-12-30T16:00:00.000Z'
+      type: DERIVE
+      entity: Supermart Grocery Sales
+      calendar: '[Time Calendar]'
+      filters:
+        - members:
+            - value: '[All Categorys]'
+              label: All Categorys
+          dimension:
+            dimension: '[Category]'
+        - members:
+            - value: '[All Regions]'
+              label: All Regions
+          dimension:
+            dimension: '[Region]'
+      dimensions:
+        - '[Category]'
+        - '[Customer]'
+        - '[Region]'
+        - '[Time Calendar]'
+      measure: Profit
+      formula: Count([Order ID].[Order ID].Members, ExcludeEmpty)
+      unit: v

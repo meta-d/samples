@@ -1,0 +1,20 @@
+- name: Demo DataSource
+  installationMode: standalone
+  dataSource:
+    - name: Demo - DB
+      type: pg
+      options:
+        database: demo
+        username: demo
+- name: Demo DataSource
+  installationMode: with-doris
+  dataSource:
+    - name: Demo - DB
+      type: doris
+      options:
+- name: Demo DataSource
+  installationMode: with-starrocks
+  dataSource:
+    - name: Demo - DB
+      type: starrocks
+      options:

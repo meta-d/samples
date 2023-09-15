@@ -1,0 +1,54 @@
+- name: Time Calendar
+  dataSource: Demo - DB
+  dataset:
+    - name: time_calendar
+      fileUrl: ./common/time_calendar.csv
+      catalog: demo
+      mergeType: DELETE
+      format: csv
+      withHeader: true
+      columns:
+        - name: id
+          type: string
+          length: 10
+          fieldName: id
+          isKey: true
+        - name: year
+          type: string
+          length: 4
+          fieldName: year
+        - name: month_of_year
+          type: number
+          fieldName: month_of_year
+        - name: day_of_month
+          type: number
+          fieldName: day_of_month
+        - name: day_of_week
+          type: number
+          fieldName: day_of_week
+        - name: week_day
+          type: string
+          length: 10
+          fieldName: week_day
+        - name: week_of_year
+          type: number
+          fieldName: week_of_year
+        - name: month
+          type: string
+          length: 7
+          fieldName: month
+        - name: quarter
+          type: string
+          fieldName: quarter
+          length: 2
+        - name: day8
+          type: string
+          length: 10
+          fieldName: day8
+        - name: month6
+          type: string
+          length: 10
+          fieldName: month6
+        - name: day_i
+          type: number
+          fieldName: day_i
