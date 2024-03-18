@@ -1736,7 +1736,6 @@
       businessAreaId: Demo - Sales
       options:
         options:
-          themeName: light
           preferences:
             storyStyling:
               padding: null
@@ -1765,6 +1764,7 @@
               pageHeaderPosition: below
               pageHeaderShowLabel: true
               pageHeaderAlignTabs: center
+              themeName: null
           advancedStyle: |-
             .pac-indicator-card .nx-indicator__kpi-maxnum {
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -4087,8 +4087,7 @@
                       Title: Internet Sales %
                       Value:
                         name: null
-                        dimension: Internet_Sales_Proportion
-                        hierarchy: Internet_Sales_Proportion
+                        dimension: Measures
                         level: null
                         exclude: null
                         members: null
@@ -4573,7 +4572,7 @@
                   slide:
                     padding: null
                     borderRadius: null
-                    backgroundColor: '#ffffff94'
+                    backgroundColor: '#cacaca10'
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
                     borderColor: null
@@ -6547,7 +6546,7 @@
             styling:
               padding: null
               borderRadius: null
-              backgroundColor: '#f6f8fb'
+              backgroundColor: null
               backgroundImage: null
               backgroundImageObj: null
               backgroundSize: 100% 100%
@@ -6592,12 +6591,9 @@
                   content: >-
                     <h1 style="line-height: 2;"><span style="font-size:
                     24pt;"><strong><span style="color: rgb(255, 117,
-                    143);">Profit Analysis</span></strong>: Overall PM is&nbsp;<span style="color:
-                    rgb(230, 126, 35);"><span style="color: rgb(255, 117,
-                    143);">[#Profit Margin]</span> <span style="color: rgb(0, 0,
-                    0);"> and </span> <span style="color: rgb(255, 117,
-                    143);">[#ProductHasPostivePM]</span>&nbsp;<span style="color:
-                    rgb(0, 0, 0);"> Products with Positive PM</span></span></span></h1>
+                    143);">Profit Analysis</span></strong>: Overall PM is&nbsp;<span style="color: rgb(255, 117,
+                    143);">[#Profit Margin]</span> <span> and </span> <span style="color: rgb(255, 117,
+                    143);">[#ProductHasPostivePM]</span>&nbsp;<span> Products with Positive PM</span></span></h1>
             - key: DA0FzsXzAC
               name: null
               options:
@@ -6846,7 +6842,7 @@
                   component:
                     padding: null
                     borderRadius: 20
-                    backgroundColor: white
+                    backgroundColor: '#cacaca10'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -6925,7 +6921,7 @@
                   component:
                     padding: 10
                     borderRadius: 20
-                    backgroundColor: '#dbf7e9b5'
+                    backgroundColor: '#c4ffe150'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -6994,7 +6990,7 @@
                   component:
                     padding: 10
                     borderRadius: 20
-                    backgroundColor: '#dbf7e9b5'
+                    backgroundColor: '#c4ffe150'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -7066,7 +7062,7 @@
                   component:
                     padding: null
                     borderRadius: 16
-                    backgroundColor: '#fae0e4'
+                    backgroundColor: '#ffd0d750'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -7160,7 +7156,7 @@
                   component:
                     padding: 10
                     borderRadius: 20
-                    backgroundColor: '#dbf7e9b5'
+                    backgroundColor: '#c4ffe150'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -7233,7 +7229,7 @@
                   component:
                     padding: null
                     borderRadius: 16
-                    backgroundColor: '#fae0e4'
+                    backgroundColor: '#ffd0d750'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -7330,7 +7326,7 @@
                   component:
                     padding: null
                     borderRadius: 16
-                    backgroundColor: '#fae0e4'
+                    backgroundColor: '#ffd0d750'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -7521,7 +7517,7 @@
                   component:
                     padding: null
                     borderRadius: 20
-                    backgroundColor: white
+                    backgroundColor: '#cacaca10'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -7641,7 +7637,7 @@
             styling:
               padding: null
               borderRadius: null
-              backgroundColor: '#f6f8fb'
+              backgroundColor: null
               backgroundImage: null
               backgroundImageObj: null
               backgroundSize: 100% 100%
@@ -7688,8 +7684,8 @@
                     style="color: rgb(45, 194, 107);"><strong>Pareto Analysis</strong></span>:
                     Top&nbsp;<span style="color: rgb(45, 194, 107);">[@TopNSales]</span>
                     Products Sales&nbsp;<span style="color: rgb(45, 194,
-                    107);">[#TopNProductsSalesP] <span style="color: rgb(0, 0,
-                    0);">Pct of Quantity is </span>[#TopNProductsP]</span></span></h1>
+                    107);">[#TopNProductsSalesP]</span> <span>Pct of Quantity is </span><span style="color: rgb(45, 194,
+                    107);">[#TopNProductsP]</span></span></h1>
             - key: R4YkiGxWob
               name: null
               options:
@@ -7761,7 +7757,7 @@
                   component:
                     padding: null
                     borderRadius: 10
-                    backgroundColor: white
+                    backgroundColor: '#cacaca10'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -7858,7 +7854,7 @@
                   component:
                     padding: null
                     borderRadius: 10
-                    backgroundColor: white
+                    backgroundColor: '#cacaca10'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -7911,7 +7907,7 @@
                   component:
                     padding: 8
                     borderRadius: 16
-                    backgroundColor: '#dbf7e9b5'
+                    backgroundColor: '#c4ffe150'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -8183,7 +8179,7 @@
                   component:
                     padding: null
                     borderRadius: 16
-                    backgroundColor: white
+                    backgroundColor: '#cacaca10'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -8256,7 +8252,7 @@
                   component:
                     padding: null
                     borderRadius: null
-                    backgroundColor: '#dbf7e9b5'
+                    backgroundColor: '#c4ffe150'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -8336,7 +8332,7 @@
                   component:
                     padding: 8
                     borderRadius: 16
-                    backgroundColor: '#dbf7e9b5'
+                    backgroundColor: '#c4ffe150'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -8405,7 +8401,7 @@
                   component:
                     padding: 10
                     borderRadius: 20
-                    backgroundColor: '#dbf7e9b5'
+                    backgroundColor: '#c4ffe150'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -8845,7 +8841,7 @@
                   component:
                     padding: null
                     borderRadius: 20
-                    backgroundColor: white
+                    backgroundColor: '#cacaca10'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -8940,7 +8936,7 @@
                   component:
                     padding: null
                     borderRadius: 16
-                    backgroundColor: white
+                    backgroundColor: '#cacaca10'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -9012,7 +9008,7 @@
                   component:
                     padding: null
                     borderRadius: null
-                    backgroundColor: '#dbf7e9b5'
+                    backgroundColor: '#c4ffe150'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -9107,7 +9103,7 @@
                   component:
                     padding: 8
                     borderRadius: 16
-                    backgroundColor: white
+                    backgroundColor: '#cacaca10'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%
@@ -9176,7 +9172,7 @@
                   component:
                     padding: 10
                     borderRadius: 20
-                    backgroundColor: '#dbf7e9b5'
+                    backgroundColor: '#c4ffe150'
                     backgroundImage: null
                     backgroundImageObj: null
                     backgroundSize: 100% 100%

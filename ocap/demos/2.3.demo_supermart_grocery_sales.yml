@@ -378,9 +378,8 @@
             __showstory__: true
             __showpage__: true
             story:
-              width: 1512
-              height: 945
               tabBar: hidden
+              themeName: dark
               __showappearance__: true
               __showstyling__: false
               appearance:
@@ -401,7 +400,6 @@
                 defaultLayerIndex: 5
                 maxLayerIndex: 25
                 baseLayerIndex: 1
-          themeName: dark
           echartsTheme:
             dark:
               grid:
@@ -721,6 +719,10 @@
             }
           locale: zh-Hans
           fullscreen: true
+          emulatedDevice:
+            name: Macbook pro 14
+            width: 1512
+            height: 945
       points:
         - name: 概览
           key: 6TZbxgT8dJ
